@@ -1,0 +1,32 @@
+import: 
+  - recipe/laravel.php
+
+config:
+  repository: 'git@github.com:StevenAltmae/tire-shop.git'
+  keep_releases: 2
+
+hosts:
+  stage:
+    hostname: 'tak22altmae.itmajakas.ee'
+    http_user: virt118975
+    remote_user: virt118975
+    deploy_path: '~/domeenid/www.tak22altmae.itmajakas.ee/tireshop'
+
+tasks:
+
+  opcache:clear:
+    - run: killall php84-cgi || true
+
+  deploy:
+    - "deploy:prepare"
+    - "deploy:vendors"
+    - "artisan:storage:link"
+    # - "artisan:optimize:clear"
+    # - "artisan:optimize"
+    - "deploy:publish"
+
+after:
+  deploy:failed: deploy:unlock
+
+before:
+  deploy:success: opcache:clear
