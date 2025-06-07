@@ -26,7 +26,7 @@ $cart = CartSession::current();
          class="absolute right-0 mt-2 w-96 bg-white rounded-lg shadow-lg overflow-hidden z-50">
         
         <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Shopping Cart</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Ostu korv</h3>
             
             @if($cart && $cart->lines->count() > 0)
                 <div class="space-y-4">
@@ -64,16 +64,16 @@ $cart = CartSession::current();
                         </div>
                         <div class="mt-6">
                             <a href="{{ route('cart.show') }}" class="flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800 transition duration-150 ease-in-out">
-                                View Cart
+                                Vaata ostukorvi
                             </a>
                         </div>
                     </div>
                 </div>
             @else
                 <div class="text-center py-6">
-                    <p class="text-gray-500">Your cart is empty</p>
+                    <p class="text-gray-500">Ostukorv on tühi</p>
                     <a href="{{ route('home') }}" class="mt-4 inline-block text-gray-900 hover:text-gray-700 transition duration-150 ease-in-out">
-                        Continue Shopping
+                        Jätka sirvimist
                     </a>
                 </div>
             @endif
