@@ -68,6 +68,8 @@ use Lunar\Facades\CartSession;
 
         {{-- Product Details --}}
         <div class="md:w-1/2 flex flex-col">
+            <h1 class="text-3xl font-bold text-gray-900 mb-6">{{ $product->translateAttribute('name') }}</h1>
+
             @php
                 $firstVariant = $product->variants->first();
                 $firstPrice = $firstVariant ? $firstVariant->prices->first() : null;

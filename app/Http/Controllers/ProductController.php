@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::where('status', 'published')
-            ->with(['media', 'variants.prices', 'productType.mappedAttributes'])
+            ->with(['media', 'variants.prices', 'productType.mappedAttributes', 'tags'])
             ->get();
 
         return view('products.index', [

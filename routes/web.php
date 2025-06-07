@@ -4,9 +4,26 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use Lunar\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-Route::get('/', function () {
-    $products = \Lunar\Models\Product::where('status', 'published')->get();
+Route::get('/', function (Request $request) {
+    $query = \Lunar\Models\Product::where('status', 'published')
+        ->with(['media', 'variants.prices', 'productType.mappedAttributes', 'tags']);
+
+    if ($request->has('search') && !empty($request->search)) {
+        $searchTerm = '%' . strtolower($request->search) . '%';
+        $query->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(attribute_data, '$.name'))) LIKE ?", [$searchTerm]);
+    }
+
+    if ($request->has('tag') && !empty($request->tag)) {
+        $query->whereHas('tags', function ($q) use ($request) {
+            $q->where('value', $request->tag);
+        });
+    }
+
+    $products = $query->get();
+
     return view('welcome', compact('products'));
 })->name('home');
 
