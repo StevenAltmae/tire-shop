@@ -9,7 +9,7 @@
         
         <div class="prose max-w-none">
             <p class="mb-4">
-                Teretulemast Tire Shop'i, teie usaldusväärsesse partnerisse kõigi rehvide vajaduste rahuldamisel. 
+                Tere tulemast Tire Shop'i, teie usaldusväärsesse partnerisse kõigi rehvide vajaduste rahuldamisel. 
                 Aastatepikkuse kogemusega rehvitööstuses pakume oma klientidele kõrgekvaliteedilisi rehve ja 
                 erakordset teenindust.
             </p>
