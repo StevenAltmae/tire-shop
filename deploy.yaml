@@ -19,13 +19,8 @@ tasks:
   opcache:clear:
     - run: killall php84-cgi || true
 
-  fix:env:
-    - run: sed -i 's/APP_NAME=Tire-Shop/APP_NAME="Tire-Shop"/' {{deploy_path}}/shared/.env
-
   deploy:
     - "deploy:prepare"
-    - "deploy:shared"
-    - "fix:env"
     - "deploy:vendors"
     - "artisan:storage:link"
     # - "artisan:optimize:clear"
