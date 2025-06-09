@@ -5,6 +5,7 @@ config:
   repository: 'git@github.com:StevenAltmae/tire-shop.git'
   keep_releases: 2
   shared_files: ['.env']
+  shared_dirs: ['storage']
 
 hosts:
   stage:
@@ -20,6 +21,7 @@ tasks:
 
   deploy:
     - "deploy:prepare"
+    - "deploy:shared"
     - "deploy:vendors"
     - "artisan:storage:link"
     # - "artisan:optimize:clear"
