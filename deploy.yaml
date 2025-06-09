@@ -4,6 +4,7 @@ import:
 config:
   repository: 'git@github.com:StevenAltmae/tire-shop.git'
   keep_releases: 2
+  shared_files: ['.env']
 
 hosts:
   stage:
